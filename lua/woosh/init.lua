@@ -1,5 +1,6 @@
 require("woosh.remap")
 require("woosh.plugin")
+require("woosh.theme")
 
 -- Relative Numbers
 vim.o.nu = 1
@@ -22,6 +23,8 @@ vim.o.scrolloff = 8
 vim.o.encoding = 'utf-8'
 vim.o.cursorline = 1
 vim.o.termguicolors = true
+
+vim.opt.list = true
 
 -- Helpers
 vim.o.autoread = 1
