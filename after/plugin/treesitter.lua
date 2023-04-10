@@ -1,4 +1,7 @@
-require 'nvim-treesitter.install'.compilers = { "clang" }
+--[[
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  require('nvim-treesitter.install').compilers = { "clang" }
+end
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "javascript", "c_sharp", "c", "lua", "vim", "vimdoc", "query" },
@@ -9,3 +12,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+]]--
