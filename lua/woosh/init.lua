@@ -2,6 +2,8 @@ require("woosh.remap")
 require("woosh.plugin")
 require("woosh.theme")
 
+-- File Types
+
 -- Relative Numbers
 vim.o.nu = 1
 vim.o.rnu = 1
@@ -29,3 +31,4 @@ vim.opt.list = true
 -- Helpers
 vim.o.autoread = 1
 vim.o.mouse = 'a'
+
