@@ -2,15 +2,22 @@ vim.call 'plug#begin'
 
 local Plug = vim.fn['plug#']
 
+-- Utility
+Plug('nvim-lua/plenary.nvim')
+
 -- Lsp
 Plug('neovim/nvim-lspconfig')
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
-Plug('nvim-lua/plenary.nvim')
+-- Terminal
+Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' } ) --[[ https://github.com/akinsho/toggleterm.nvim ]]--
+
+-- User Interface
 Plug('nvim-telescope/telescope.nvim', { ['rev'] = '0.1.1' }) 
 Plug('nvim-lualine/lualine.nvim') --[[ https://github.com/nvim-lualine/lualine.nvim ]]--
 Plug('nvim-tree/nvim-web-devicons') --[[ https://github.com/nvim-tree/nvim-web-devicons ]]--
 Plug('lukas-reineke/indent-blankline.nvim') --[[ https://github.com/lukas-reineke/indent-blankline.nvim ]]--
+Plug('stevearc/dressing.nvim') --[[ https://github.com/stevearc/dressing.nvim ]]--
 
 -- Themes
 Plug('ellisonleao/gruvbox.nvim') --[[ https://github.com/ellisonleao/gruvbox.nvim ]]--
