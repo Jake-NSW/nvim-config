@@ -16,6 +16,17 @@ local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
 local themes = require('telescope.themes')
 
+local function file_exists(path)
+    local f = io.open(path)
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
+
 local M = { }
 
 -- Context Aware Search
@@ -30,7 +41,32 @@ M.project_files = function()
         preview_width = 0.4,
     }
 
-    if ret == 0 then
+    if file_exists(vim.fn.getcwd() .. "/ProjectSettings/ProjectSettings.asset") then 
+        require('telescope.builtin').find_files({
+            sorting_strategy = "ascending",
+            layout_config = layout,
+            prompt_title = "",
+            prompt_prefix = "Assets  ",
+            results_title = "\"" .. name .. "\" Project Files",
+            path_display = { "truncate" },
+            file_ignore_patterns = {
+                "Library",
+                "Temp",
+                "obj",
+                "Builds",
+                "Build",
+                "Logs",
+                "UserSettings",
+                "UIElementsSchema",
+                "Compiled",
+                ".vscode",
+                ".idea",
+                ".git",
+                "**/*.meta",
+                "**/*.csproj",
+            },
+        })
+    elseif ret == 0 then
         require('telescope.builtin').git_files({
             sorting_strategy = "ascending",
             layout_config = layout,
