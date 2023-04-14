@@ -12,6 +12,7 @@ require('telescope').setup({
     }
 })
 
+local unity = require('unity.utility')
 local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
 local themes = require('telescope.themes')
@@ -41,7 +42,7 @@ M.project_files = function()
         preview_width = 0.4,
     }
 
-    if file_exists(vim.fn.getcwd() .. "/ProjectSettings/ProjectSettings.asset") then 
+    if unity.is_unity_context() then 
         require('telescope.builtin').find_files({
             sorting_strategy = "ascending",
             layout_config = layout,
@@ -49,22 +50,7 @@ M.project_files = function()
             prompt_prefix = "Unity  ",
             results_title = "\"" .. name .. "\" Project Files",
             path_display = { "truncate" },
-            file_ignore_patterns = {
-                "Library",
-                "Temp",
-                "obj",
-                "Builds",
-                "Build",
-                "Logs",
-                "UserSettings",
-                "UIElementsSchema",
-                "Compiled",
-                ".vscode",
-                ".idea",
-                ".git",
-                "**/*.meta",
-                "**/*.csproj",
-            },
+            file_ignore_patterns = unity.ignored_files(),
         })
     elseif ret == 0 then
         require('telescope.builtin').git_files({

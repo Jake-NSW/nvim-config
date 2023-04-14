@@ -2,6 +2,8 @@ require("woosh.remap")
 require("woosh.plugin")
 require("woosh.theme")
 
+require('unity').setup()
+
 -- File Types
 
 -- Relative Numbers
