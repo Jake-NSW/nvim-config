@@ -19,10 +19,12 @@ Plug('nvim-telescope/telescope.nvim', { ['rev'] = '0.1.1' })
 Plug('nvim-lualine/lualine.nvim') --[[ https://github.com/nvim-lualine/lualine.nvim ]]--
 Plug('lukas-reineke/indent-blankline.nvim') --[[ https://github.com/lukas-reineke/indent-blankline.nvim ]]--
 Plug('stevearc/dressing.nvim') --[[ https://github.com/stevearc/dressing.nvim ]]--
+Plug('anuvyklack/windows.nvim') --[[ https://github.com/anuvyklack/windows.nvim ]]--
 
 -- Themes
 Plug('ellisonleao/gruvbox.nvim') --[[ https://github.com/ellisonleao/gruvbox.nvim ]]--
 Plug('sainnhe/gruvbox-material') --[[ https://github.com/sainnhe/gruvbox-material ]]--
 Plug('rebelot/kanagawa.nvim') --[[ https://github.com/rebelot/kanagawa.nvim ]]--
+Plug('folke/tokyonight.nvim') --[[ https://github.com/rebelot/kanagawa.nvim ]]--
 
 vim.call 'plug#end'

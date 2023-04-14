@@ -13,7 +13,7 @@ end
 
 require('toggleterm').setup({
     open_mapping = '<C-t>',
-    direction = 'float',
+    direction = 'horizontal',
     float_opts = {
         border = 'curved'
     }

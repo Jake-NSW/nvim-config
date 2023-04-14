@@ -9,6 +9,12 @@ require('telescope').setup({
         color_devicons = true,
         prompt_prefix = " ",
         selection_caret = " ",
+        preview_title = "";
+        borderchars = {
+            prompt = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
+            results = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
+            preview = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
+        };
     }
 })
 
