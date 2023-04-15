@@ -206,7 +206,7 @@ M.setup = function()
 
     local path = 'user.options.'
     -- Setup external plugins
-    require(path .. 'nvimtree')
+    require(path .. 'nvimtree').setup()
     require(path .. 'telescope')
     require(path .. 'treesitter')
 end
