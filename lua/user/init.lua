@@ -1,12 +1,3 @@
-require("user.remap")
-require("user.plugin").setup()
-require("user.plugin").load()
-require("user.theme")
-
-require('unity').setup()
-
--- File Types
-
 -- Relative Numbers
 vim.o.nu = 1
 vim.o.rnu = 1
@@ -35,3 +26,9 @@ vim.opt.list = true
 vim.o.autoread = 1
 vim.o.mouse = 'a'
 
+require("user.keymaps").setup()
+require("user.plugins").setup()
+require('user.options').setup()
+require("user.theme").setup()
+
+require('unity').setup()

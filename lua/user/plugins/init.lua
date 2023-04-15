@@ -33,8 +33,4 @@ M.setup = function()
     vim.call 'plug#end'
 end
 
-M.load = function()
-    require('user.plugin.config').configure()
-end
-
 return M
