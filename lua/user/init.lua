@@ -1,6 +1,7 @@
-require("woosh.remap")
-require("woosh.plugin")
-require("woosh.theme")
+require("user.remap")
+require("user.plugin").setup()
+require("user.plugin").load()
+require("user.theme")
 
 require('unity').setup()
 
