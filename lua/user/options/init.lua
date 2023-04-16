@@ -5,6 +5,30 @@ local setup_blankline = function()
     }
 end
 
+--
+
+local setup_bufferline = function()
+    require('bufferline').setup({
+        options = {
+            mode = "buffers",
+            themable = false,
+            tab_size = 20,
+            offsets = {
+                {
+                    filetype = "NvimTree",
+                    text = "  Explorer",
+                    text_align = "left",
+                    separator = true,
+                }
+            },
+            indicator = {
+                style = 'none',
+            },
+            separator_style = "slant",
+        }
+    })
+end
+
 -- 
 
 local setup_devicons = function()
@@ -197,18 +221,25 @@ end
 M = { }
 
 M.setup = function()
+    require('scope').setup()
+    require('fidget').setup()
+    require('which-key').setup()
+
     -- Setup in-file plugins
     setup_blankline()
     setup_devicons()
     setup_dressing()
     setup_lualine()
+    setup_bufferline()
     setup_toggleterm()
 
     local path = 'user.options.'
+
     -- Setup external plugins
     require(path .. 'nvimtree').setup()
     require(path .. 'telescope')
     require(path .. 'treesitter')
+    require(path .. 'lsp')
 end
 
 return M

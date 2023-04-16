@@ -8,6 +8,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.smarttab = 1
 
+vim.o.undofile = true
+
 -- Search
 vim.o.hlsearch = 0
 vim.o.ignorecase = 1

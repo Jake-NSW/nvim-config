@@ -6,7 +6,7 @@ M.setup = function()
     local current = 'kanagawa'
     if current == 'kanagawa' then
         -- Kanagawa Options
-        theme = require('kanagawa')
+        local theme = require('kanagawa')
         theme.setup({
             compile = false,             -- enable compiling the colorscheme
             undercurl = true,            -- enable undercurls
@@ -23,15 +23,21 @@ M.setup = function()
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
             overrides = function(colors) -- add/modify highlights
-                local theme = colors.theme
+                local palette = colors.theme
                 return {
-                    TelescopeTitle = { fg = theme.ui.special, bold = true },
-                    TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-                    TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-                    TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-                    TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-                    TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-                    TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+                    TelescopeTitle = { fg = palette.ui.special, bold = true },
+                    TelescopePromptNormal = { bg = palette.ui.bg_p1 },
+                    TelescopePromptBorder = { fg = palette.ui.bg_p1, bg = palette.ui.bg_p1 },
+                    TelescopeResultsNormal = { fg = palette.ui.fg_dim, bg = palette.ui.bg_m1 },
+                    TelescopeResultsBorder = { fg = palette.ui.bg_m1, bg = palette.ui.bg_m1 },
+                    TelescopePreviewNormal = { bg = palette.ui.bg_dim },
+                    TelescopePreviewBorder = { bg = palette.ui.bg_dim, fg = palette.ui.bg_dim },
+                    Pmenu = { fg = palette.ui.shade0, bg = palette.ui.bg_p1 },
+                    PmenuSel = { fg = "NONE", bg = palette.ui.bg_p2 },
+                    PmenuSbar = { bg = palette.ui.bg_m1 },
+                    PmenuThumb = { bg = palette.ui.bg_p2 },
+                    NormalDark = { fg = palette.ui.fg_dim, bg = palette.ui.bg_m3 },
+                    MasonNormal = { bg = palette.ui.bg_m3, fg = palette.ui.fg_dim },
                 }
             end,
             theme = "wave",
@@ -45,8 +51,6 @@ M.setup = function()
     end
 
     if current == 'tokyonight' then
-        local util = require("tokyonight.util")
-
         require("tokyonight").setup({
             style = "night",
             transparent = false,
@@ -82,11 +86,11 @@ M.setup = function()
                 }
                 hl.TelescopePreviewBorder = {
                   bg = c.bg_dark,
-                  fg = c.bg_dark,            
+                  fg = c.bg_dark,
                 }
                 hl.TelescopePreviewTitle = {
                   bg = c.bg_dark,
-                  fg = c.bg_dark,            
+                  fg = c.bg_dark,
                 }
 
                 -- Prompt
