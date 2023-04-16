@@ -1,4 +1,4 @@
-M = { }
+M = {}
 
 M.setup = function()
     vim.g.mapleader = " "

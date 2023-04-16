@@ -29,7 +29,7 @@ local setup_bufferline = function()
     })
 end
 
--- 
+--
 
 local setup_devicons = function()
     require('nvim-web-devicons').setup({
@@ -45,14 +45,14 @@ local setup_devicons = function()
         default = true,
         strict = true,
         override_by_filename = {
-            [".gitignore"] = { 
+            [".gitignore"] = {
                 icon = "",
-                color = "#f1502f", 
+                color = "#f1502f",
                 name = "Gitignore",
             },
         },
         override_by_extension = {
-        ["log"] = {
+            ["log"] = {
                 icon = "",
                 color = "#81e043",
                 name = "Log"
@@ -65,65 +65,61 @@ end
 
 local setup_dressing = function()
     require('dressing').setup({
-      input = {
-        enabled = true,
-        default_prompt = "Input ",
-        title_pos = "left",
-        insert_only = true,
-        start_in_insert = true, 
-        anchor = "SW",
-        border = "rounded",
-        relative = "cursor",
-        prefer_width = 40,
-        width = nil,
-        max_width = { 140, 0.9 },
-        min_width = { 20, 0.2 },
-
-        buf_options = {},
-        win_options = {
-          winblend = 10,
-          wrap = false,
-          list = true,
-          listchars = "precedes:…,extends:…",
-          sidescrolloff = 0,
+        input = {
+            enabled = true,
+            default_prompt = "Input ",
+            title_pos = "left",
+            insert_only = true,
+            start_in_insert = true,
+            anchor = "SW",
+            border = "rounded",
+            relative = "cursor",
+            prefer_width = 40,
+            width = nil,
+            max_width = { 140, 0.9 },
+            min_width = { 20, 0.2 },
+            buf_options = {},
+            win_options = {
+                winblend = 10,
+                wrap = false,
+                list = true,
+                listchars = "precedes:…,extends:…",
+                sidescrolloff = 0,
+            },
+            mappings = {
+                n = {
+                    ["<Esc>"] = "Close",
+                    ["<CR>"] = "Confirm",
+                },
+                i = {
+                    ["<C-c>"] = "Close",
+                    ["<CR>"] = "Confirm",
+                    ["<Up>"] = "HistoryPrev",
+                    ["<Down>"] = "HistoryNext",
+                },
+            },
+            override = function(conf)
+                return conf
+            end,
+            get_config = nil,
         },
-
-        mappings = {
-          n = {
-            ["<Esc>"] = "Close",
-            ["<CR>"] = "Confirm",
-          },
-          i = {
-            ["<C-c>"] = "Close",
-            ["<CR>"] = "Confirm",
-            ["<Up>"] = "HistoryPrev",
-            ["<Down>"] = "HistoryNext",
-          },
-        },
-
-        override = function(conf)
-          return conf
-        end,
-
-        get_config = nil,
-      },
-      select = {
-        enabled = true,
-        backend = { "telescope" },
-        trim_prompt = true,
-        telescope = nil,
-    }})
+        select = {
+            enabled = true,
+            backend = { "telescope" },
+            trim_prompt = true,
+            telescope = nil,
+        }
+    })
 end
 
 --
 
 local setup_lualine = function()
-
     -- Configure Custom Extensions
 
     nvimtree_extension = {
-        sections = { },
-        inactive_sections = { },
+        sections = {},
+        inactive_sections = {},
         filetypes = { 'NvimTree' }
     }
 
@@ -143,8 +139,8 @@ local setup_lualine = function()
             component_separators = { left = '|', right = '|' },
             section_separators = { left = '', right = '' },
             disabled_filetypes = {
-                statusline = { },
-                winbar = { },
+                statusline = {},
+                winbar = {},
             },
             ignore_focus = {},
             always_divide_middle = true,
@@ -156,9 +152,9 @@ local setup_lualine = function()
             }
         },
         sections = {
-            lualine_a = {'mode'},
-            lualine_b = {'diagnostics'},
-            lualine_c = {'filename'},
+            lualine_a = { 'mode' },
+            lualine_b = { 'diagnostics' },
+            lualine_c = { 'filename' },
             lualine_x = {},
             lualine_y = {
                 {
@@ -177,8 +173,8 @@ local setup_lualine = function()
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = {'filename'},
-            lualine_x = {'location'},
+            lualine_c = { 'filename' },
+            lualine_x = { 'location' },
             lualine_y = {},
             lualine_z = {}
         },
@@ -191,12 +187,13 @@ local setup_lualine = function()
     lualine.refresh()
 end
 
--- 
+--
 
 local setup_toggleterm = function()
     local powershell_options = {
         shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
-        shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+        shellcmdflag =
+        "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
         shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
         shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
         shellquote = "",
@@ -218,7 +215,7 @@ end
 
 --
 
-M = { }
+M = {}
 
 M.setup = function()
     require('scope').setup()

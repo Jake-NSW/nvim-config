@@ -2,19 +2,17 @@
 Helpful Code
 Picker - https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/pickers.lua
 --]]
-
-
 require('telescope').setup({
     defaults = {
         color_devicons = true,
         prompt_prefix = " ",
         selection_caret = " ",
-        preview_title = "";
+        preview_title = "",
         borderchars = {
-            prompt = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
-            results = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
-            preview = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
-        };
+            prompt = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+            results = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+            preview = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+        },
     }
 })
 
@@ -34,7 +32,7 @@ local function file_exists(path)
 end
 
 
-local M = { }
+local M = {}
 
 -- Context Aware Search
 M.project_files = function()
@@ -48,7 +46,7 @@ M.project_files = function()
         preview_width = 0.4,
     }
 
-    if unity.is_unity_context() then 
+    if unity.is_unity_context() then
         require('telescope.builtin').find_files({
             sorting_strategy = "ascending",
             layout_config = layout,
@@ -111,4 +109,4 @@ M.config_files = function()
 end
 
 vim.keymap.set('n', '<leader><C-p>', M.config_files, {});
-vim.keymap.set('n', '<C-p>', M.project_files, { });
+vim.keymap.set('n', '<C-p>', M.project_files, {});

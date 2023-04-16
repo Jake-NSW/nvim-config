@@ -1,4 +1,4 @@
-M = { }
+M = {}
 
 M.setup = function()
     vim.o.background = "dark"
@@ -8,17 +8,18 @@ M.setup = function()
         -- Kanagawa Options
         local theme = require('kanagawa')
         theme.setup({
-            compile = false,             -- enable compiling the colorscheme
-            undercurl = true,            -- enable undercurls
+            compile = false,  -- enable compiling the colorscheme
+            undercurl = true, -- enable undercurls
             commentStyle = { italic = false },
             functionStyle = {},
             keywordStyle = { italic = true },
             statementStyle = { bold = true },
             typeStyle = {},
-            transparent = false,         -- do not set background color
-            dimInactive = true,         -- dim inactive window `:h hl-NormalNC`
-            terminalColors = true,       -- define vim.g.terminal_color_{0,17}
-            colors = {                   -- add/modify theme and palette colors
+            transparent = false,   -- do not set background color
+            dimInactive = true,    -- dim inactive window `:h hl-NormalNC`
+            terminalColors = true, -- define vim.g.terminal_color_{0,17}
+            colors = {
+                                   -- add/modify theme and palette colors
                 palette = {},
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
@@ -61,7 +62,7 @@ M.setup = function()
                 sidebars = "dark",
                 floats = "dark",
             },
-            sidebars = {"terminal", "help", "NvimTree", "qf" },
+            sidebars = { "terminal", "help", "NvimTree", "qf" },
             on_colors = function(colors)
                 colors.hint = colors.orange
                 colors.error = "#ff0000"
@@ -70,51 +71,51 @@ M.setup = function()
                 local prompt = "#2d3149"
 
                 hl.TelescopeNormal = {
-                  bg = c.bg_dark,
-                  fg = c.fg_dark,
+                    bg = c.bg_dark,
+                    fg = c.fg_dark,
                 }
                 hl.TelescopeBorder = {
-                  bg = c.bg_dark,
-                  fg = c.bg_dark,
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
                 }
 
                 -- Preview
                 local preview = c.fd_dark
                 hl.TelescopePreviewNormal = {
-                  bg = preview,
-                  fg = preview,
+                    bg = preview,
+                    fg = preview,
                 }
                 hl.TelescopePreviewBorder = {
-                  bg = c.bg_dark,
-                  fg = c.bg_dark,
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
                 }
                 hl.TelescopePreviewTitle = {
-                  bg = c.bg_dark,
-                  fg = c.bg_dark,
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
                 }
 
                 -- Prompt
                 hl.TelescopePromptNormal = {
-                  bg = prompt,
+                    bg = prompt,
                 }
                 hl.TelescopePromptBorder = {
-                  bg = prompt,
-                  fg = prompt,
+                    bg = prompt,
+                    fg = prompt,
                 }
                 hl.TelescopePromptTitle = {
-                  bg = prompt,
-                  fg = prompt,
+                    bg = prompt,
+                    fg = prompt,
                 }
 
                 -- Results
                 hl.TelescopeResultsTitle = {
-                  bg = c.bg_dark,
-                  fg = c.bg_dark,
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
                 }
             end,
         })
 
-        vim.cmd[[colorscheme tokyonight]]
+        vim.cmd [[colorscheme tokyonight]]
     end
 end
 

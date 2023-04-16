@@ -1,7 +1,7 @@
 M = {}
 
 
-M.setup =  function()
+M.setup = function()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
@@ -16,7 +16,7 @@ M.setup =  function()
             indent_width = 1,
             root_folder_label = false,
         },
-        view = { 
+        view = {
             mappings = {
                 custom_only = false,
                 list = {
@@ -31,12 +31,12 @@ M.setup =  function()
     })
 
     local api = require("nvim-tree.api")
-    api.events.subscribe(api.events.Event.FileCreated, function(file) 
-        vim.cmd("edit " .. file.fname) 
+    api.events.subscribe(api.events.Event.FileCreated, function(file)
+        vim.cmd("edit " .. file.fname)
     end)
 
-    vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeFocus<cr>", {silent = true, noremap = true})
-    vim.api.nvim_set_keymap("n", "<leader><C-e>", ":NvimTreeFindFile<cr>", {silent = true, noremap = true})
+    vim.api.nvim_set_keymap("n", "<C-e>", ":NvimTreeFocus<cr>", { silent = true, noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader><C-e>", ":NvimTreeFindFile<cr>", { silent = true, noremap = true })
 end
 
 return M
