@@ -1,4 +1,4 @@
-local M = { }
+local M = {}
 
 local function file_exists(path)
     local f = io.open(path)
@@ -14,25 +14,25 @@ M.is_unity_context = function()
     return file_exists(vim.fn.getcwd() .. "/ProjectSettings/ProjectSettings.asset")
 end
 
-M.ignored_files = function() 
+M.ignored_files = function()
     return {
-    "Library",
-    "Temp",
-    "obj",
-    "Builds",
-    "Build",
-    "Logs",
-    "UserSettings",
-    "UIElementsSchema",
-    "Compiled",
-    ".vscode",
-    ".idea",
-    ".git",
-    "**/*.meta",
-    "**/*.csproj",
-    "**/*.sln",
-    "**/*.vsconfig",
-    "**/*.sln.DotSettings.user",
+        "Library",
+        "Temp",
+        "obj",
+        "Builds",
+        "Build",
+        "Logs",
+        "UserSettings",
+        "UIElementsSchema",
+        "Compiled",
+        ".vscode",
+        ".idea",
+        ".git",
+        "**/*.meta",
+        "**/*.csproj",
+        "**/*.sln",
+        "**/*.vsconfig",
+        "**/*.sln.DotSettings.user",
     }
 end
 
@@ -52,4 +52,3 @@ M.open_meta = function(file)
 end
 
 return M
-

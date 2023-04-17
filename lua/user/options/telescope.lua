@@ -1,7 +1,3 @@
---[[
-Helpful Code
-Picker - https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/pickers.lua
---]]
 require('telescope').setup({
     defaults = {
         color_devicons = true,
@@ -19,20 +15,26 @@ require('telescope').setup({
 local unity = require('unity.utility')
 local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
-local themes = require('telescope.themes')
-
-local function file_exists(path)
-    local f = io.open(path)
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
-end
-
 
 local M = {}
+
+-- Symbols
+M.inspect_symbols = function()
+    local layout = {
+        width = 0.6,
+        prompt_position = "top",
+        height = 0.6,
+        preview_width = 0.4,
+    }
+
+    require('telescope.builtin').lsp_document_symbols({
+        sorting_strategy = "ascending",
+        layout_config = layout,
+        prompt_title = "",
+        prompt_prefix = "Symbols  ",
+        results_title = "",
+    })
+end
 
 -- Context Aware Search
 M.project_files = function()
@@ -54,6 +56,7 @@ M.project_files = function()
             prompt_prefix = "Unity  ",
             results_title = "\"" .. name .. "\" Project Files",
             path_display = { "truncate" },
+            hidden = true,
             file_ignore_patterns = unity.ignored_files(),
         })
     elseif ret == 0 then
@@ -110,3 +113,4 @@ end
 
 vim.keymap.set('n', '<leader><C-p>', M.config_files, {});
 vim.keymap.set('n', '<C-p>', M.project_files, {});
+vim.keymap.set('n', '<C-o>', M.inspect_symbols, {});

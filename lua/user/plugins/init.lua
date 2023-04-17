@@ -16,6 +16,7 @@ M.setup = function()
     Plug('williamboman/mason.nvim')
     Plug('williamboman/mason-lspconfig.nvim')
     Plug('folke/neodev.nvim')
+    Plug('onsails/lspkind.nvim')
 
     -- Autocompletion
     Plug('L3MON4D3/LuaSnip', { ['tag'] = 'v1.*',['do'] = 'make install_jsregexp' })

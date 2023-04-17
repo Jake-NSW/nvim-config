@@ -135,11 +135,11 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require('mason-lspconfig')
 
-mason_lspconfig.setup {
+mason_lspconfig.setup({
     ensure_installed = vim.tbl_keys(servers),
-}
+})
 
-mason_lspconfig.setup_handlers {
+mason_lspconfig.setup_handlers({
     function(server_name)
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
@@ -147,7 +147,7 @@ mason_lspconfig.setup_handlers {
             settings = servers[server_name],
         }
     end,
-}
+})
 
 -- nvim-cmp setup
 local cmp = require('cmp')
@@ -155,7 +155,30 @@ local luasnip = require('luasnip')
 
 luasnip.config.setup({})
 
-cmp.setup {
+cmp.setup({
+    window = {
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
+    },
+    formatting = {
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({
+                mode = "symbol_text",
+                maxwidth = 50,
+                ellipsis_char = '...',
+            })(entry, vim_item)
+
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+            return kind
+        end,
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -192,4 +215,4 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
     },
-}
+})
