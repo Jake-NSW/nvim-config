@@ -7,7 +7,6 @@ M.setup = function()
 
     local api = require('nvim-tree.api')
     local plugin = require('nvim-tree')
-
     plugin.setup({
         sort_by = "case_sensitive",
         sync_root_with_cwd = true,

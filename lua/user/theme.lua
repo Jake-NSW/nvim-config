@@ -3,7 +3,72 @@ M = {}
 M.setup = function()
     vim.o.background = "dark"
 
-    local current = 'kanagawa'
+    local current = 'catppuccin'
+
+    if current == "catppuccin" then
+        require("catppuccin").setup({
+            flavour = "mocha", -- latte, frappe, macchiato, mocha
+            background = {
+                -- :h background
+                light = "latte",
+                dark = "mocha",
+            },
+            transparent_background = false,
+            show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+            term_colors = false,
+            dim_inactive = {
+                enabled = true,
+                shade = "dark",
+                percentage = 0.15,
+            },
+            no_italic = false, -- Force no italic
+            no_bold = false,   -- Force no bold
+            styles = {
+                comments = { "italic" },
+                conditionals = { "italic" },
+                loops = {},
+                functions = {},
+                keywords = {},
+                strings = {},
+                variables = {},
+                numbers = {},
+                booleans = {},
+                properties = {},
+                types = {},
+                operators = {},
+            },
+            color_overrides = {
+            },
+            custom_highlights = function(colors)
+                return {
+                    TelescopePromptTitle   = { fg = colors.surface2 },
+                    TelescopePromptNormal  = { bg = colors.surface2 },
+                    TelescopePromptPrefix  = { bg = colors.surface2 },
+                    TelescopePromptBorder  = { bg = colors.surface2, fg = colors.surface2 },
+                    TelescopeResultsTitle  = { fg = colors.text },
+                    TelescopeResultsNormal = { bg = colors.base },
+                    TelescopeResultsBorder = { bg = colors.base, fg = colors.base },
+                    TelescopePreviewTitle  = { fg = colors.crust },
+                    TelescopePreviewNormal = { bg = colors.crust },
+                    TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
+                    StatusLine = { bg = colors.crust, fg = colors.crust },
+                }
+            end,
+            integrations = {
+                cmp = true,
+                gitsigns = true,
+                nvimtree = true,
+                telescope = true,
+                notify = false,
+                mini = false,
+                -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+            },
+        })
+
+        -- setup must be called before loading
+        vim.cmd.colorscheme "catppuccin"
+    end
+
     if current == 'kanagawa' then
         -- Kanagawa Options
         local theme = require('kanagawa')
@@ -16,7 +81,7 @@ M.setup = function()
             statementStyle = { bold = true },
             typeStyle = {},
             transparent = false,   -- do not set background color
-            dimInactive = false,    -- dim inactive window `:h hl-NormalNC`
+            dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
             terminalColors = true, -- define vim.g.terminal_color_{0,17}
             colors = {
                 -- add/modify theme and palette colors

@@ -56,7 +56,6 @@ M.project_files = function()
             prompt_prefix = "Unity  ",
             results_title = "\"" .. name .. "\" Project Files",
             path_display = { "truncate" },
-            hidden = true,
             file_ignore_patterns = unity.ignored_files(),
         })
     elseif ret == 0 then
@@ -66,7 +65,6 @@ M.project_files = function()
             prompt_title = "",
             prompt_prefix = "Repo  ",
             path_display = { "truncate" },
-            hidden = true,
             results_title = "\"" .. name .. "\" Project Files",
         })
     else
@@ -77,7 +75,6 @@ M.project_files = function()
             prompt_prefix = "Files  ",
             results_title = "\"" .. name .. "\" Project Files",
             path_display = { "truncate" },
-            hidden = true,
             file_ignore_patterns = {
                 ".git/",
             },
@@ -101,7 +98,6 @@ M.config_files = function()
         preview_title = "",
         cwd = "~/AppData/Local/nvim/",
         path_display = { "truncate" },
-        hidden = true,
         file_ignore_patterns = {
             "**/*.ttf",
             "**/*.otf",

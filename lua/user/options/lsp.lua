@@ -151,17 +151,31 @@ mason_lspconfig.setup_handlers({
 
 -- nvim-cmp setup
 local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local luasnip = require('luasnip')
 
 luasnip.config.setup({})
-
 cmp.setup({
+    enabled = function()
+        -- disable completion in comments
+        local context = require('cmp.config.context')
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == 'c' then
+            return true
+        else
+            return not context.in_treesitter_capture("comment")
+                and not context.in_syntax_group("Comment")
+        end
+    end,
     window = {
         completion = {
             winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
             col_offset = -3,
             side_padding = 0,
         },
+        documentation = cmp.config.window.bordered({
+            border = 'none',
+        }),
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -216,3 +230,5 @@ cmp.setup({
         { name = 'luasnip' },
     },
 })
+
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
